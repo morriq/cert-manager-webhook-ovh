@@ -18,6 +18,8 @@ RUN CGO_ENABLED=1 CC=aarch64-linux-gnu-gcc GOOS=linux GOARCH=arm64 go build -o w
 
 FROM multiarch/ubuntu-core:arm64-bionic
 
+WORKDIR /root/
+
 COPY --from=build /workspace/webhook .
 
 ENTRYPOINT ["webhook"]
