@@ -1,5 +1,7 @@
 FROM golang:1.13.6-alpine AS build_deps
 
+RUN apk add gcc-aarch64-linux-gnu
+
 RUN apk add --no-cache git
 
 WORKDIR /workspace
@@ -11,8 +13,6 @@ COPY go.sum .
 RUN go mod download
 
 FROM build_deps AS build
-
-RUN apk add -y gcc-aarch64-linux-gnu
 
 COPY . .
 
