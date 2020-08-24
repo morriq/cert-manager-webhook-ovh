@@ -1,6 +1,6 @@
 FROM golang:1.13.6-alpine AS build_deps
 
-RUN apk add --no-cache gcc-aarch64-linux-gnu
+RUN apk add --update gcc-aarch64-linux-gnu
 
 RUN apk add --no-cache git
 
