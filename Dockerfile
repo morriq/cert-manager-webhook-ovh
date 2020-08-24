@@ -1,6 +1,6 @@
 FROM golang:1.13.6-alpine AS build_deps
 
-RUN apk add gcc-aarch64-linux-gnu
+RUN apt-get update && apt-get install -y gcc-aarch64-linux-gnu
 
 RUN apk add --no-cache git
 
