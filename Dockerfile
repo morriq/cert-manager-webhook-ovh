@@ -12,7 +12,7 @@ RUN go mod download
 
 FROM build_deps AS build
 
-RUN apt-get update && apt-get install -y gcc-aarch64-linux-gnu
+RUN apk add -y gcc-aarch64-linux-gnu
 
 COPY . .
 
