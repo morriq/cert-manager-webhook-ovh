@@ -89,6 +89,8 @@ If you customized the installation of cert-manager, you may need to also set the
 
 ## Certificate
 
+NOT NEEDED SINCE CERT-MANAGER WILL GENERATE ITSELF
+
 Issue a certificate:
 
 ```yaml
