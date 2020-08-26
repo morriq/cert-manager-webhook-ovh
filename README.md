@@ -12,7 +12,7 @@ This is a webhook solver for [OVH](http://www.ovh.com).
 Choose a unique group name to identify your company or organization (for example `acme.mycompany.example`).
 
 ```bash
-helm install morriqdev ./deploy/cert-manager-webhook-ovh \
+helm install <HELMNAME> ./deploy/cert-manager-webhook-ovh \
  --set groupName='<YOUR_UNIQUE_GROUP_NAME>'
 ```
 
@@ -57,7 +57,7 @@ If you customized the installation of cert-manager, you may need to also set the
     subjects:
     - apiGroup: ""
       kind: ServiceAccount
-      name: cert-manager-webhook-ovh-morriqdev
+      name: <HELMNAME>-cert-manager-webhook-ovh
     ```
 
 4. Create a certificate issuer:
