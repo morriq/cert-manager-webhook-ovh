@@ -28,9 +28,14 @@ If you customized the installation of cert-manager, you may need to also set the
 
 2. Create a secret to store your application secret:
 
+Creating single secret in your NAMESPACE causes issues (https://github.com/jetstack/cert-manager/issues/650) that's why add it twice (possibly I could resolve it better)
+
     ```bash
-    kubectl create secret generic ovh-credentials \
-      --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
+    kubectl create secret generic ovh-credentials --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
+    ```
+
+    ```bash
+    kubectl create secret generic ovh-credentials -n <NAMESPACE> --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
     ```
 
 3. Grant permission to get the secret to the `cert-manager-webhook-ovh` service account:
