@@ -29,7 +29,7 @@ If you customized the installation of cert-manager, you may need to also set the
 2. Create a secret to store your application secret:
 
     ```bash
-    kubectl create secret generic ovh-credentials -n <NAMESPACE> \
+    kubectl create secret generic ovh-credentials \
       --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
     ```
 
