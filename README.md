@@ -13,7 +13,7 @@ Choose a unique group name to identify your company or organization (for example
 
 ```bash
 helm install <HELMNAME> ./deploy/cert-manager-webhook-ovh \
- --set groupName='<YOUR_UNIQUE_GROUP_NAME>'
+ --set groupName='<YOUR_UNIQUE_GROUP_NAME>' -n <NAMESPACE>
 ```
 
 If you customized the installation of cert-manager, you may need to also set the `certManager.namespace` and `certManager.serviceAccountName` values.
