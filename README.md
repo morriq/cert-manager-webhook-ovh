@@ -28,23 +28,19 @@ If you customized the installation of cert-manager, you may need to also set the
 
 2. Create a secret to store your application secret:
 
-- [ ] add namespace to commands
-
     ```bash
-    kubectl create secret generic ovh-credentials \
+    kubectl create secret generic ovh-credentials -n <NAMESPACE> \
       --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
     ```
 
 3. Grant permission to get the secret to the `cert-manager-webhook-ovh` service account:
-
-
-- [ ] add namespace to commands
 
     ```yaml
     apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
     metadata:
       name: cert-manager-webhook-ovh:secret-reader
+      namespace: <NAMESPACE>
     rules:
     - apiGroups: [""]
       resources: ["secrets"]
@@ -55,6 +51,7 @@ If you customized the installation of cert-manager, you may need to also set the
     kind: RoleBinding
     metadata:
       name: cert-manager-webhook-ovh:secret-reader
+      namespace: <NAMESPACE>
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: Role
@@ -62,19 +59,18 @@ If you customized the installation of cert-manager, you may need to also set the
     subjects:
     - apiGroup: ""
       kind: ServiceAccount
+      namespace: <NAMESPACE>
       name: <HELMNAME>-cert-manager-webhook-ovh
     ```
 
 4. Create a certificate issuer:
-
-
-- [ ] add namespace to commands
 
     ```yaml
     apiVersion: cert-manager.io/v1alpha2
     kind: Issuer
     metadata:
       name: letsencrypt
+      namespace: <NAMESPACE>
     spec:
       acme:
         server: https://acme-v02.api.letsencrypt.org/directory
