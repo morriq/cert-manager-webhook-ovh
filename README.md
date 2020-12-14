@@ -96,7 +96,6 @@ Creating single secret in your NAMESPACE causes issues (https://github.com/jetst
                 consumerKey: '<OVH_CONSUMER_KEY>'
     ```
 
-5. update replicas to two in deployment 
 
 ## Certificate
 
